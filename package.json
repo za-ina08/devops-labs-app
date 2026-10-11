@@ -1,0 +1,10 @@
+
+{
+  "name": "devops-labs-app",
+  "version": "1.0.0",
+  "description": "GitHub to AWS Elastic Beanstalk CI/CD demo",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js"
+  }
+}
