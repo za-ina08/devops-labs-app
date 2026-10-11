@@ -1,0 +1,27 @@
+
+AWSTemplateFormatVersion: '2010-09-09'
+Description: CloudFormation pipeline test and production demo
+
+Parameters:
+  Environment:
+    Type: String
+    Default: test
+    AllowedValues:
+      - test
+      - prod
+    Description: Deployment environment
+
+Resources:
+  PipelineBucket:
+    Type: AWS::S3::Bucket
+    Properties:
+      BucketName: !Sub 'cloudformation-pipeline-${Environment}-${AWS::AccountId}'
+
+Outputs:
+  BucketName:
+    Description: Name of the created S3 bucket
+    Value: !Ref PipelineBucket
+
+  Environment:
+    Description: Selected deployment environment
+    Value: !Ref Environment
