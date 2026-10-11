@@ -1,27 +1,26 @@
 
 AWSTemplateFormatVersion: '2010-09-09'
-Description: CloudFormation pipeline test and production demo
+
+Description: CloudFormation template for CodePipeline test and production environments
 
 Parameters:
   Environment:
     Type: String
+    Description: Select deployment environment
     Default: test
     AllowedValues:
       - test
       - prod
-    Description: Deployment environment
 
 Resources:
-  PipelineBucket:
+  ApplicationBucket:
     Type: AWS::S3::Bucket
-    Properties:
-      BucketName: !Sub 'cloudformation-pipeline-${Environment}-${AWS::AccountId}'
 
 Outputs:
-  BucketName:
-    Description: Name of the created S3 bucket
-    Value: !Ref PipelineBucket
-
   Environment:
-    Description: Selected deployment environment
+    Description: Environment name
     Value: !Ref Environment
+
+  BucketName:
+    Description: Created S3 bucket
+    Value: !Ref ApplicationBucket
